@@ -1,0 +1,28 @@
+class Solution(object):
+    def returndict(self,word):
+        dict={}
+        for i in range (len(word)):
+            if word[i] in dict:
+                dict[word[i]]+=1
+            else:
+                dict[word[i]]=1
+
+        return dict
+
+    def canConstruct(self, ransomNote, magazine):
+        ransom=self.returndict(ransomNote)
+        maga=self.returndict(magazine)
+        check=0
+        for keys in ransom:
+            
+            if keys in maga:
+                if ransom[keys]<=maga[keys]:
+                    check+=1
+                else:
+                    break
+            else:
+                break
+        if(check==len(ransom)):
+            return True
+
+    
