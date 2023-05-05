@@ -1,0 +1,16 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        check=str(x)
+        temp=""
+        if (x<0):
+            return False
+        elif(x==0):
+            return True
+        else:
+            while(x>0):
+                temp+=str(x%10)
+                x//=10
+            if temp==check:
+                return True
+            else:
+                return False
