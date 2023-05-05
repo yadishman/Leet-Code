@@ -1,0 +1,46 @@
+class Solution(object):
+    def myAtoi(self, s):
+        digit=["0","1","2","3","4","5","6","7","8","9"]
+        signs=["+","-"]
+        flag=False
+        temp=""
+        for letter in s:
+            if letter in digit:
+                flag=True
+                temp+=letter
+            if letter in signs:
+                if flag==True:
+                    if temp[-1] not in digit:
+                        temp="0"
+                        break
+                    else:
+                        break
+                else:
+                    flag=True
+                    temp+=letter
+            if letter==" ":
+                if flag==True:
+                    if temp in signs:
+                        temp="0"
+                        break
+                    else:
+                        break
+            elif letter not in digit and letter not in signs and letter!=" ":
+                if len(temp)==0:
+                    temp="0"
+                    break
+                else:
+                    break
+            
+
+        if temp in signs or temp=="":
+            return 0
+        else:
+            return self.check(int(temp))
+
+    def check(self,number):
+        if number < -2147483648:
+            return -2147483648
+        elif number > 2147483647:
+            return 2147483647
+        return number
